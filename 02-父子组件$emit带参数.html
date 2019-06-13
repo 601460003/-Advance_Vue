@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div>
+
+</div>
+<script>
+    new Vue({
+        methods:{
+            add(){
+                this.bus.$emit('change','对象/参数')
+            }
+        },
+        //利用实例方法监听bus的改变
+        created(){
+            this.bus.$on('change',function (msg) {
+                alert(msg)
+            })
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="title">
+    <button @click="add()">提交</button>
+    <ul>
+       <todo-item
+               :content="item"
+               v-for="(item,index) in list"
+               @delete="dela()"
+       ></todo-item>
+    </ul>
+</div>
+<script>
+    Vue.component("TodoItem",{
+        props:['content'],
+        template:'<li @click="del()">{{content}}</li>',
+        methods:{
+            del(){
+               this.$emit('delete')
+            }
+        }
+    })
+    new Vue({
+        el:'#app',
+        data:{
+            list:['第一课的内容','第二课的内容'],
+            title:''
+        },
+        methods:{
+            add(){
+                this.list.push(this.title)
+                this.title=''
+            },
+            dela(){
+                this.list = []
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>给组件绑定原生事件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+ <div id="app">
+  <child :content="true" @click.native="add()"></child>
+ </div>
+
+<script>
+    Vue.component('child',{
+        props:{
+            content:{
+                // 严格类型
+                type:Number,
+                // 必须要传值
+                required:true,
+                // 如果没有传值，默认为
+                default:'默认值',
+                //传入值必须大于5
+                validata:function (value) {
+                    return (value.length >5)
+                }
+            }
+        },
+        template:'<div>{{content}}</div>'
+    })
+    new Vue({
+        el:'#app',
+        methods:{
+            add(){
+                alert(111)
+            }
+        }
+    })
+</script>
+</body>
+</html>

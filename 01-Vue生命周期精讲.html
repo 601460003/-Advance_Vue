@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue生命周期精讲--一共有11个声明周期</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div id =app>
+    {{title}}
+</div>
+
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            title:'hellow word'
+        },
+        beforeCreate(){
+            console.log(this.$el)
+            console.log('beforCreate')
+        },
+        created(){
+            console.log(this.$el)
+            console.log('created')
+        },
+        beforeMount(){
+            console.log(this.$el)
+            console.log('beforeMount')
+        },
+        mounted(){
+            console.log(this.$el)
+            console.log('mounted')
+        },
+        beforeDestroy(){
+            console.log('beforeDestroy')
+        },
+        destroy(){
+            console.log('destroy')
+        },
+        beforeUpate(){
+            console.log('beforeUpate')
+        },
+        upated(){
+            console.log('upated')
+        }
+
+    })
+</script>
+</body>
+</html>

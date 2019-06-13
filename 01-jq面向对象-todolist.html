@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div>
+    <input id="input" type="text">
+    <button id="btn">提交</button>
+    <ul id="li"></ul>
+</div>
+<script>
+    function Page() {
+        
+    }
+    $.extend(Page.prototype,{
+        init:function () {
+            this.bindEvent()
+        },
+        bindEvent:function () {
+            var btn = $('#btn');
+            btn.on('click',$.proxy(this.handleBtnClick,this))
+        },
+        handleBtnClick:function () {
+            var input1 = $('#input').val();
+            var ul =$('#li');
+            ul.append(`<li>${input1}</li>`)
+            $('#input').val('')
+        }
+    })
+    var page = new Page();
+    page.init();
+</script>
+</body>
+</html>
