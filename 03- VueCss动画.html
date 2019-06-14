@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<style>
+    /*第一种简单过渡效果*/
+    .fade-enter,.fade-leave-to{
+    opacity: 0;
+    }
+    .fade-enter-active,.fade-leave-active{
+        transition: opacity 1s;
+    }
+
+    /*第二种使用动画@keyframes*/
+    @keyframes bounce-in{
+        0%{
+            transform: scale(0);
+        }
+        50%{
+            transform: scale(1.5);
+        }
+        100%{
+            transform: scale(0);
+        }
+    }
+
+    .fade-enter-active{
+        transform-origin:left center;
+        animation: bounce-in 1s ;
+    }
+    .fade-leave-active{
+        transform-origin:left center;
+        animation: bounce-in 1s ;
+    }
+
+</style>
+<div id="app">
+    <!--css样式根据定义的name-->
+    <!--原理就是动态绑定css样式 通过监听-->
+    <!--enter-active-class='active'自定义类名字-->
+    <!--多个元素的过度效果加上key值-->
+    <transition name="fade">
+      <div v-if="show">hello word!</div>
+    </transition>
+    <button @click="handleClick">动画</button>
+</div>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+             show:true
+        },
+        methods:{
+            handleClick(){
+                this.show = !this.show
+            }
+        }
+    })
+</script>
+</body>
+</html>
